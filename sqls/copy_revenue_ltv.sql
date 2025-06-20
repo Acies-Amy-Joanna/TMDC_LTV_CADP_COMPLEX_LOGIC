@@ -1,0 +1,12 @@
+SELECT
+    visit_date,
+    user_id,
+    unique_id,
+    entry_channel,
+    entry_page,
+    device,
+    Visit_id,
+    session_id,
+    revenue
+FROM    
+    LTV.REVENUE

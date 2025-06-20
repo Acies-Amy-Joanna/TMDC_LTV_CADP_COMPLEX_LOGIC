@@ -1,0 +1,25 @@
+views:
+  - name: LTV_view
+    description: This metric calculates the LTV
+    public: true
+    meta:
+      title: User Engagement
+      tags:   
+        - DPDomain.LTV
+        - DPUsecase.LTV
+      
+      metric:          #mandatory
+        expression: "30 6 L * *"
+        timezone: "UTC"
+        window: "day"
+
+          
+    tables:
+      - join_path: copy_visit_ltv
+        prefix: true
+        includes:
+          - ltv  #MEasure       
+          - profit #MEasure columns #check
+          - total_unique_ids
+          - Visit_id   #Groupby column
+          - visit_datetime # Timestamp-mandatory

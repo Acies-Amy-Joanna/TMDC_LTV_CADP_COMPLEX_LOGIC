@@ -1,0 +1,101 @@
+tables:
+  - name: copy_revenue_ltv
+    sql: {{ load_sql('copy_revenue_ltv') }}
+    description: revenue information
+    public: true
+
+
+
+    dimensions:
+
+      - name: visit_date
+        column: visit_date
+        type: time
+        description: visit date of the user
+
+      - name: user_id
+        column: user_id
+        type: string
+        description: user_id of a user  
+
+      - name: unique_id
+        column: unique_id
+        type: string
+        description: unique_id of a user  
+
+      - name: entry_channel
+        column: entry_channel
+        type: string
+        description: entry_channel of the user  
+
+      - name: entry_page
+        column: entry_page
+        type: string
+        description: entry_page of the user  
+
+      - name: device
+        column: device
+        type: string
+        description: type of device  
+
+      - name: Visit_id
+        column: visit_id
+        type: string
+        description: Visit_id of a user  
+        primary_key: true
+
+      - name: session_id
+        column: session_id
+        type: string
+        description: session ID 
+        
+
+      - name: revenue
+        column: revenue
+        type: number
+        description: revenue per user
+
+      
+    measures:
+      
+      - name: sum_revenue
+        sql: SUM({TABLE.revenue})   #aggregate function mandatory
+        type: number 
+        description: total revenue
+        
+
+
+      - name: total_users
+        sql: user_id
+        type: count_distinct
+        description: Total distinct users in the dataset
+
+      - name: total_unique_ids
+        sql: unique_id
+        type: count_distinct
+        description: Total distinct unique IDs in the dataset
+
+      - name: total_entry_channels
+        sql: entry_channel
+        type: count_distinct
+        description: Total distinct entry channels in the dataset
+
+      - name: total_entry_pages
+        sql: entry_page
+        type: count_distinct
+        description: Total distinct entry pages in the dataset
+
+      - name: total_devices
+        sql: device
+        type: count_distinct
+        description: Total distinct devices in the dataset
+
+      - name: total_visits
+        sql: Visit_id
+        type: count_distinct
+        description: Total distinct visits in the dataset
+
+      - name: total_sessions
+        sql: session_id
+        type: count_distinct
+        description: Total distinct sessions in the dataset  

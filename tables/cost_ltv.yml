@@ -1,0 +1,70 @@
+tables:
+  - name: copy_cost_ltv
+    sql: {{ load_sql('copy_cost_ltv') }}
+    description: cost information
+    public: true
+
+
+    dimensions:
+
+      - name: visit_id
+        column: visit_id
+        type: string
+        description: Visit_id of a user
+        primary_key: true
+
+      - name: unique_id
+        column: unique_id
+        type: string
+        description: unique_id of a user 
+
+      - name: entry_channel
+        column: entry_channel
+        type: string
+        description: entry_channel of the user   
+
+      - name: device
+        column: device
+        type: string
+        description: type of device    
+
+      - name: visit_date
+        column: visit_date
+        type: time
+        description: visit date of the user
+
+      - name: cost
+        column: cost
+        type: number
+        description: cost per user 
+
+
+      
+    measures:
+      
+      - name: sum_cost
+        sql: SUM({TABLE.cost})   #aggregate function mandatory
+        type: number 
+        description: total cost  
+
+      - name: total_visits
+        sql: visit_id
+        type: count_distinct
+        description: Total distinct visit IDs in the dataset
+
+      - name: total_unique_ids
+        sql: unique_id
+        type: count_distinct
+        description: Total distinct unique IDs in the dataset
+
+      - name: total_entry_channels
+        sql: entry_channel
+        type: count_distinct
+        description: Total distinct entry channels in the dataset
+
+      - name: total_devices
+        sql: device
+        type: count_distinct
+        description: Total distinct devices in the dataset
+
+      

@@ -1,0 +1,25 @@
+views:
+  - name: profit_view
+    description: This metric calculates the profit from revenue and the cost
+    public: true
+    meta:
+      title: User Engagement
+      tags:   
+        - DPDomain.LTV
+        - DPUsecase.LTV
+      
+      metric:          #mandatory
+        expression: "30 6 L * *"
+        timezone: "UTC"
+        window: "day"
+
+          
+    tables:
+      - join_path: copy_visit_ltv
+        prefix: true
+        includes:
+          - profit  #MEasure       
+          - calc_revenue #MEasure columns #check
+          - v_cost
+          - Visit_id   #Groupby column
+          - visit_datetime # Timestamp-mandatory

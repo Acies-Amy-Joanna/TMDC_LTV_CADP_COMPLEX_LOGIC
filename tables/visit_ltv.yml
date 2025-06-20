@@ -1,0 +1,204 @@
+tables:
+  - name: copy_visit_ltv
+    sql: {{ load_sql('copy_visit_ltv') }}
+    description: visit information
+    
+
+    joins:
+      - name: cost_ltv
+        relationship: one_to_one
+        sql: "{TABLE.Visit_id}={copy_cost_ltv.visit_id} and {TABLE.visit_datetime}={copy_cost_ltv.visit_date}"
+
+      - name: revenue_ltv
+        relationship: one_to_one
+        sql: "{TABLE.Visit_id}={copy_revenue_ltv.Visit_id} and {TABLE.visit_datetime}={copy_revenue_ltv.visit_date}"  
+
+    dimensions:
+      - name: session_id
+        column: session_id
+        type: string
+        description: session ID 
+        
+
+      - name: Visit_id
+        column: Visit_id
+        type: string
+        description: Visit_id of a user
+        primary_key: true
+        public: true
+
+      - name: user_id
+        column: user_id
+        type: string
+        description: user_id of a user
+
+      - name: unique_id
+        column: unique_id
+        type: string
+        description: unique_id of a user
+
+      - name: device_id
+        column: device_id
+        type: string
+        description: device_id of a user
+
+      - name: cookie_id
+        column: cookie_id
+        type: string
+        description: cookie_id of customer
+
+      - name: device
+        column: device
+        type: string
+        description: type of device
+
+      - name: entry_channel
+        column: entry_channel
+        type: string
+        description: entry_channel of the user
+
+      - name: user_country
+        column: user_country
+        type: string
+        description: country from where user visited 
+
+      - name: entry_page
+        column: entry_page
+        type: string
+        description: entry_page of the user
+
+      - name: number_of_page_viewed
+        column: number_of_page_viewed
+        type: number
+        description: number_of_page_viewed
+
+      - name: number_of_attraction_page_viewed
+        column: number_of_attraction_page_viewed
+        type: number
+        description: number_of_attraction_page_viewed
+
+      - name: number_of_hotels_page_viewed
+        column: number_of_hotels_page_viewed
+        type: number
+        description: number_of_hotels_page_viewed
+
+      - name: number_of_other_page_viewed
+        column: number_of_other_page_viewed
+        type: number
+        description: number_of_other_page_viewed
+
+      - name: visit_datetime
+        column: visit_datetime
+        type: time
+        description: visit time of the user       
+
+      - name: calc_revenue
+        column: "{revenue_ltv.revenue}"
+        type: number
+        description: Revenue
+        
+
+      - name: v_cost
+        column: "{cost_ltv.cost}"
+        type: number
+        description: Cost
+               
+      
+    measures:
+
+      
+
+      - name: profit
+        sql: SUM({TABLE.calc_revenue}-{TABLE.v_cost})   #aggregate function mandatory
+        type: number 
+        description: Profit earned      
+        
+      - name: total_sessions
+        sql: session_id
+        type: count_distinct
+        description: Total distinct sessions in the dataset
+
+      - name: total_visits
+        sql: Visit_id
+        type: count_distinct
+        description: Total distinct visits in the dataset
+
+      - name: total_users
+        sql: user_id
+        type: count_distinct
+        description: Total distinct users in the dataset
+
+      - name: total_unique_ids 
+        sql: unique_id
+        type: count_distinct
+        description: Total distinct unique IDs in the dataset
+
+      - name: total_devices
+        sql: device_id
+        type: count_distinct
+        description: Total distinct devices in the dataset
+
+      - name: total_cookies
+        sql: cookie_id
+        type: count_distinct
+        description: Total distinct cookies in the dataset
+
+      - name: total_device_types
+        sql: device
+        type: count_distinct
+        description: Total distinct device types in the dataset
+
+      - name: total_entry_channels
+        sql: entry_channel
+        type: count_distinct
+        description: Total distinct entry channels in the dataset
+
+      - name: total_user_countries
+        sql: user_country
+        type: count_distinct
+        description: Total distinct user countries in the dataset
+
+      - name: total_entry_pages
+        sql: entry_page
+        type: count_distinct
+        description: Total distinct entry pages in the dataset
+
+      - name: total_page_views
+        sql: number_of_page_viewed
+        type: count_distinct
+        description: Total distinct page views in the dataset
+
+      - name: total_attraction_page_views
+        sql: number_of_attraction_page_viewed
+        type: count_distinct
+        description: Total distinct attraction page views in the dataset
+
+      - name: total_hotel_page_views
+        sql: number_of_hotels_page_viewed
+        type: count_distinct
+        description: Total distinct hotel page views in the dataset
+
+      - name: total_other_page_views
+        sql: number_of_other_page_viewed
+        type: count_distinct
+        description: Total distinct other page views in the dataset
+
+      - name: ltv
+        sql:  "{TABLE.profit}/{TABLE.total_unique_ids}"   #aggregate function mandatory
+        type: number 
+        description: ltv  
+
+    segments:
+      - name: device_desktop
+        sql: device = 'desktop'
+        description: This segment filters visits based on device 
+
+      - name: device_mobile
+        sql: device = 'mobile'
+        description: This segment filters visits based on device
+
+      - name: device_tablet
+        sql: device = 'tablet'
+        description: This segment filters visits based on device    
+
+    

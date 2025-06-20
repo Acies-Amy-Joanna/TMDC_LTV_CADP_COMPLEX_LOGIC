@@ -1,0 +1,9 @@
+SELECT
+    visit_id,
+    unique_id,
+    entry_channel,
+    device,
+    visit_date,
+    cost
+FROM    
+    LTV.COST
