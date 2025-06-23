@@ -5,11 +5,11 @@ tables:
     
 
     joins:
-      - name: cost_ltv
+      - name: copy_cost_ltv
         relationship: one_to_one
         sql: "{TABLE.Visit_id}={copy_cost_ltv.visit_id} and {TABLE.visit_datetime}={copy_cost_ltv.visit_date}"
 
-      - name: revenue_ltv
+      - name: copy_revenue_ltv
         relationship: one_to_one
         sql: "{TABLE.Visit_id}={copy_revenue_ltv.Visit_id} and {TABLE.visit_datetime}={copy_revenue_ltv.visit_date}"  
 
@@ -93,13 +93,13 @@ tables:
         description: visit time of the user       
 
       - name: calc_revenue
-        column: "{revenue_ltv.revenue}"
+        column: "{copy_revenue_ltv.revenue}"
         type: number
         description: Revenue
         
 
       - name: v_cost
-        column: "{cost_ltv.cost}"
+        column: "{copy_cost_ltv.cost}"
         type: number
         description: Cost
                
