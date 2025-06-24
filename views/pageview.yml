@@ -1,0 +1,28 @@
+views:
+  - name: Page_view
+    description: This metric calculates the total page views 
+    public: true
+    meta:
+      title: User Engagement
+      tags:   
+        - DPDomain.LTV
+        - DPUsecase.LTV
+      
+      metric:          #mandatory
+        expression: "30 6 L * *"
+        timezone: "UTC"
+        window: "day"
+
+    tables:
+      - join_path: copy_visit_ltv
+        prefix: true
+        includes:
+          -total_page_views      
+          -total_attraction_page_views 
+          -total_hotel_page_views           
+          -total_other_page_views
+          -Visit_id                                         
+          -visit_datetime   
+          # -device_desktop - not sure if i can include these 
+          # -device_mobile
+          # -device_tablet

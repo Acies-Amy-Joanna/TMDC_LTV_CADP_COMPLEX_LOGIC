@@ -19,7 +19,6 @@ tables:
         type: string
         description: session ID 
         
-
       - name: Visit_id
         column: Visit_id
         type: string
@@ -105,9 +104,6 @@ tables:
                
       
     measures:
-
-      
-
       - name: profit
         sql: SUM({TABLE.calc_revenue}-{TABLE.v_cost})   #aggregate function mandatory
         type: number 

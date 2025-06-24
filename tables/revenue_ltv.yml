@@ -63,8 +63,6 @@ tables:
         type: number 
         description: total revenue
         
-
-
       - name: total_users
         sql: user_id
         type: count_distinct

@@ -19,7 +19,7 @@ views:
         prefix: true
         includes:
           - ltv  #MEasure       
-          - profit #MEasure columns #check
-          - total_unique_ids
+          - profit #MEasure
+          - total_unique_ids #measure
           - Visit_id   #Groupby column
           - visit_datetime # Timestamp-mandatory
