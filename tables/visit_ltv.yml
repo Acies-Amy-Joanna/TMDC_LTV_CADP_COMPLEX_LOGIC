@@ -104,10 +104,7 @@ tables:
         description: Cost
                
       
-    measures:
-
-      
-
+    measures:    
       - name: profit
         sql: SUM({TABLE.calc_revenue}-{TABLE.v_cost})   #aggregate function mandatory
         type: number 
@@ -192,7 +189,17 @@ tables:
         sql: "{TABLE.v_cost}/{TABLE.total_unique_ids}"
         type: number
         description: Cost per distinct user ID
-        
+     
+      - name: avg_revenue_per_visit
+        sql: "{TABLE.calc_revenue}/{TABLE.total_visits}"
+        type: number
+        description: Average revenue earned per visit
+    
+      - name: avg_page_views_per_session
+        sql: "{TABLE.total_page_views}/{TABLE.total_sessions}"
+        type: number
+        description: Average number of pages viewed per session
+
     segments:
       - name: device_desktop
         sql: device = 'desktop'

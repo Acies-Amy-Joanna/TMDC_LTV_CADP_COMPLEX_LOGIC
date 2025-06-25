@@ -1,0 +1,24 @@
+views:
+  - name: Session_view
+    description: This metric calculates the total page views per session
+    public: true
+    meta:
+      title: User Engagement
+      tags:   
+        - DPDomain.LTV
+        - DPUsecase.LTV
+      
+      metric:          #mandatory
+        expression: "30 6 L * *"
+        timezone: "UTC"
+        window: "day"
+
+    tables:
+      - join_path: copy_visit_ltv
+        prefix: true
+        includes:
+           - avg_page_views_per_session
+           - total_page_views
+           - total_sessions
+           - Visit_id
+           - visit_datetime
