@@ -181,17 +181,17 @@ tables:
         description: Total distinct other page views in the dataset
 
       - name: ltv
-        sql:  "{TABLE.profit}/{TABLE.total_unique_ids}"   #aggregate function mandatory
+        sql:  "{TABLE.profit}/{TABLE.total_unique_ids}"   
         type: number 
         description: ltv  
 
-      - name: Cost_per_user_id
-        sql: "{TABLE.v_cost}/{TABLE.total_unique_ids}"
+      - name: avg_cost_per_user_id
+        sql: SUM({TABLE.v_cost}) / COUNT(DISTINCT {TABLE.unique_id})
         type: number
-        description: Cost per distinct user ID
-     
+        description: Average cost incurred per unique user ID
+
       - name: avg_revenue_per_visit
-        sql: "{TABLE.calc_revenue}/{TABLE.total_visits}"
+        sql: "SUM({copy_revenue_ltv.revenue}) / {TABLE.Visit_id}"
         type: number
         description: Average revenue earned per visit
     

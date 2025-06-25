@@ -17,8 +17,10 @@ views:
       - join_path: copy_visit_ltv
         prefix: true
         includes:
-           - cost_per_user_id
+           - avg_cost_per_user_id
            - v_cost
            - total_unique_ids
+           - device 
+           - entry_channel
            - Visit_id
            - visit_datetime
