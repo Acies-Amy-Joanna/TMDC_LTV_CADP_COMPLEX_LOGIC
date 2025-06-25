@@ -1,5 +1,5 @@
 views:
-  - name: Page_view
+  - name: Cost_view
     description: This metric calculates the total page views 
     public: true
     meta:
