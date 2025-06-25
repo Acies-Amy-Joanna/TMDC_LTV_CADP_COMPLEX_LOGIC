@@ -7,12 +7,15 @@ SELECT
     cookie_id,
     device,
     entry_channel,
-    user_country,
+    CASE 
+        WHEN user_country IN ('UK', 'U.K.', 'Britain') THEN 'United Kingdom'
+        ELSE user_country
+    END AS user_country,
     entry_page,
     number_of_page_viewed,
     number_of_attraction_page_viewed,
     number_of_hotels_page_viewed,
     number_of_other_page_viewed,
-    CAST(DATE_PARSE(visit_datetime, '%d-%m-%Y %H:%i') AS DATE) AS visit_datetime
+    visit_datetime
 FROM
-    LTV.VISIT
+    LTV.VISIT_COPY_DV
