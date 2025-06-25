@@ -183,7 +183,7 @@ tables:
         type: number 
         description: ltv  
 
-      - name: cost_per_user_id
+      - name: Cost_per_user_id
         sql: "{TABLE.v_cost}/{TABLE.total_unique_ids}"
         type: number
         description: Cost per distinct user ID
