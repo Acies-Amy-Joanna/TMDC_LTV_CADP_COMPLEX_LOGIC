@@ -1,6 +1,6 @@
 views:
-  - name: LTV_view
-    description: This metric calculates the LTV
+  - name: Cost_view
+    description: This metric calculates the total page views 
     public: true
     meta:
       title: User Engagement
@@ -13,13 +13,12 @@ views:
         timezone: "UTC"
         window: "day"
 
-          
     tables:
       - join_path: copy_visit_ltv
         prefix: true
         includes:
-          - ltv  #MEasure       
-          - profit #MEasure
-          - total_unique_ids #measure
-          - Visit_id   #Groupby column
-          - visit_datetime # Timestamp-mandatory
+           - cost_per_user_id
+           - v_cost
+           - total_unique_ids
+           - Visit_id
+           - visit_datetime
