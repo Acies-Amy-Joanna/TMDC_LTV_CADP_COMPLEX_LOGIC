@@ -96,7 +96,6 @@ tables:
         type: number
         description: Revenue
         
-
       - name: v_cost
         column: "{copy_cost_ltv.cost}"
         type: number
@@ -183,6 +182,11 @@ tables:
         sql:  "{TABLE.profit}/{TABLE.total_unique_ids}"   #aggregate function mandatory
         type: number 
         description: ltv  
+
+      - name: cost_per_user_id
+        sql: "{TABLE.v_cost}/{TABLE.total_unique_ids}"
+        type: number
+        description: Cost per distinct user ID
 
     segments:
       - name: device_desktop

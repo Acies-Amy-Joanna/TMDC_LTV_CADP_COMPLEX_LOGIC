@@ -17,12 +17,8 @@ views:
       - join_path: copy_visit_ltv
         prefix: true
         includes:
-          -total_page_views      
-          -total_attraction_page_views 
-          -total_hotel_page_views           
-          -total_other_page_views
-          -Visit_id                                         
-          -visit_datetime   
-          # -device_desktop - not sure if i can include these 
-          # -device_mobile
-          # -device_tablet
+           - cost_per_user_id
+           - v_cost
+           - total_unique_ids
+           - Visit_id
+           - visit_datetime
