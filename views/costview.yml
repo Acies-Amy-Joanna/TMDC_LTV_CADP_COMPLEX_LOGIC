@@ -1,6 +1,6 @@
 views:
   - name: Cost_view
-    description: This metric calculates the total page views 
+    description: This metric calculates the average cost inquired per Unique User ID
     public: true
     meta:
       title: User Engagement

@@ -20,5 +20,7 @@ views:
            - avg_revenue_per_visit
            - calc_revenue
            - total_visits
+           - device
+           - entry_channel
            - Visit_id
            - visit_datetime

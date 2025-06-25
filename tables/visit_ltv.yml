@@ -189,16 +189,17 @@ tables:
         sql: SUM({TABLE.v_cost}) / COUNT(DISTINCT {TABLE.unique_id})
         type: number
         description: Average cost incurred per unique user ID
-
+      
       - name: avg_revenue_per_visit
-        sql: "SUM({copy_revenue_ltv.revenue}) / {TABLE.Visit_id}"
+        sql: SUM({TABLE.calc_revenue}) / {TABLE.total_visits})
         type: number
         description: Average revenue earned per visit
-    
+
       - name: avg_page_views_per_session
-        sql: "{TABLE.total_page_views}/{TABLE.total_sessions}"
+        sql: SUM({TABLE.number_of_page_viewed}) / {TABLE.total_sessions})
         type: number
         description: Average number of pages viewed per session
+
 
     segments:
       - name: device_desktop
@@ -206,7 +207,7 @@ tables:
         description: This segment filters visits based on device 
 
       - name: device_mobile
-        sql: device = 'mobile'
+        sql: device = 'mobile'-
         description: This segment filters visits based on device
 
       - name: device_tablet

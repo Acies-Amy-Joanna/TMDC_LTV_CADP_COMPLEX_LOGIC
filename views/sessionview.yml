@@ -18,7 +18,9 @@ views:
         prefix: true
         includes:
            - avg_page_views_per_session
-           - total_page_views
+           - number_of_page_viewed
            - total_sessions
+           - device 
+           - entry_channel
            - Visit_id
            - visit_datetime
