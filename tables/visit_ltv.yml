@@ -191,12 +191,12 @@ tables:
         description: Average cost incurred per unique user ID
       
       - name: avg_revenue_per_visit
-        sql: SUM({TABLE.calc_revenue}) / {TABLE.total_visits})
+        sql: SUM({TABLE.calc_revenue}) / {TABLE.total_visits}
         type: number
         description: Average revenue earned per visit
 
       - name: avg_page_views_per_session
-        sql: SUM({TABLE.number_of_page_viewed}) / {TABLE.total_sessions})
+        sql: SUM({TABLE.number_of_page_viewed}) / {TABLE.total_sessions}
         type: number
         description: Average number of pages viewed per session
 
