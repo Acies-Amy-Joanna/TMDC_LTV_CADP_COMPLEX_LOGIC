@@ -7,10 +7,7 @@ SELECT
     cookie_id,
     device,
     entry_channel,
-    CASE 
-        WHEN user_country IN ('UK', 'U.K.', 'Britain') THEN 'United Kingdom'
-        ELSE user_country
-    END AS user_country,
+    user_country,
     entry_page,
     number_of_page_viewed,
     number_of_attraction_page_viewed,
@@ -18,4 +15,4 @@ SELECT
     number_of_other_page_viewed,
     visit_datetime
 FROM
-    LTV.VISIT_COPY_DV
+    LTV.VISIT

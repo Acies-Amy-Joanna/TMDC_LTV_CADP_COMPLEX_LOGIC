@@ -19,6 +19,7 @@ tables:
         type: string
         description: session ID 
         
+
       - name: Visit_id
         column: Visit_id
         type: string
@@ -96,6 +97,7 @@ tables:
         type: number
         description: Revenue
         
+
       - name: v_cost
         column: "{copy_cost_ltv.cost}"
         type: number
@@ -103,6 +105,9 @@ tables:
                
       
     measures:
+
+      
+
       - name: profit
         sql: SUM({TABLE.calc_revenue}-{TABLE.v_cost})   #aggregate function mandatory
         type: number 
@@ -187,7 +192,7 @@ tables:
         sql: "{TABLE.v_cost}/{TABLE.total_unique_ids}"
         type: number
         description: Cost per distinct user ID
-
+        
     segments:
       - name: device_desktop
         sql: device = 'desktop'
