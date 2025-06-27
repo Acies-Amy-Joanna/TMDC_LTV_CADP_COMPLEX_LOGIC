@@ -1,5 +1,5 @@
 views:
-  - name: Cost_view
+  - name: cost_view
     description: This metric calculates the average cost inquired per Unique User ID
     public: true
     meta:

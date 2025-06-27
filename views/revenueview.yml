@@ -1,5 +1,5 @@
 views:
-  - name: Revenue_view
+  - name: revenue_view
     description: This metric calculates the average revenue per visit  
     public: true
     meta:

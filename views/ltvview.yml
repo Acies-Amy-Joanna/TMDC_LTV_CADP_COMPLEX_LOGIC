@@ -1,5 +1,5 @@
 views:
-  - name: LTV_view
+  - name: ltv_view
     description: This metric calculates the LTV
     public: true
     meta:

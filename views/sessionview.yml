@@ -1,5 +1,5 @@
 views:
-  - name: Session_view
+  - name: session_view
     description: This metric calculates the total page views per session
     public: true
     meta:
